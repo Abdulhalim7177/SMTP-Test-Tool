@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Test Your SMTP email before you used it in your project <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<form method="post" class="row">
+        <div class="form-group col-6">
+            <label>SMTP Server:</label>
+            <input type="text" asp-for="SmtpServer" class="form-control"/>
+        </div>
+        <div class="col-6">
+            <label>SMTP Port:</label>
+        <input type="number" asp-for="SmtpPort" class="form-control" />
+        </div>
+    <div class="col-6">
+        <label>Username:</label>
+        <input type="text" asp-for="Username" class="form-control" />
+    </div>
+    <div class="col-6">
+        <label>Password:</label>
+        <input type="password" asp-for="Password" class="form-control" />
+    </div>
+    <div class="col-6">
+            <label>SMTP Email Address</label>
+        <input type="email" asp-for="FromEmail" class="form-control" />
+        </div>
+    <div class="col-6">
+            <label>Reciever Email</label>
+        <input type="email" asp-for="ToEmail" class="form-control" />
+        </div>
+ 
+    <div class="col-6">
+            <button type="submit" class="btn btn-primary">Send Email</button>
+        </div>
+    </form>
+    @if (Model.EmailSent)
+    {
+        <p>Email sent successfully!</p>
+    }
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <p style="color:red;">@Model.ErrorMessage</p>
+    }
+
+
